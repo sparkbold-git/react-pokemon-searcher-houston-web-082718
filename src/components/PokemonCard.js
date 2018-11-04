@@ -3,11 +3,11 @@ import { Card } from "semantic-ui-react";
 import _ from "lodash";
 // This component is presenting detail info of the pokemon
 class PokemonCard extends React.Component {
-  state = { isClick: false };
+  state = { isClicked: false };
 
   handleClick = () => {
     this.setState(state => {
-      return { isClick: !state.isClick }; // safe asigning state
+      return { isClicked: !state.isClicked }; // safe asigning state
     });
   };
   render() {
@@ -17,7 +17,7 @@ class PokemonCard extends React.Component {
       <Card>
         <div>
           <div className="image" onClick={this.handleClick}>
-            {this.state.isClick ? (
+            {this.state.isClicked ? (
               <img src={pokemon.sprites.back} alt="back" />
             ) : (
               <img src={pokemon.sprites.front} alt="front" />
@@ -29,7 +29,7 @@ class PokemonCard extends React.Component {
           <div className="extra content">
             <span>
               <i className="icon heartbeat red" />
-              {_.find(pokemon.stats, ["name", "hp"]).value}
+              {_.find(pokemon.stats, ["name", "hp"]).value || 50} hp
             </span>
           </div>
         </div>
